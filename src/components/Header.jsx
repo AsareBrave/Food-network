@@ -3,7 +3,7 @@ import React from 'react'
 export default function Header() {
 
   return (
-    <div className='h-[32px] sm:h-[40px] mx-[20px] my-[22px]  lg:my-[42px] flex justify-between items-center text-[10px] sm:text-[16px] font-normal font-Poppins leading-normal'>
+    <div className='fixed h-[32px] sm:h-[40px] mx-[20px] my-[22px]  lg:my-[42px] flex justify-between items-center text-[10px] sm:text-[16px] font-normal font-Poppins leading-normal'>
         <div className='w-[72px] sm:w-[90px] h-[24px] sm:h-[30px] text-[16px] sm:text-[20px] font-medium flex items-center justify-center'>
             <p>Food<span className='text-primary-red'>Bag</span></p>
         </div>
