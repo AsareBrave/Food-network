@@ -28,16 +28,12 @@ export default function HomeContextProvider(props) {
     return totalAmount;
   };
 
-  const clearItems = () => {
-    let close = 0;
-    for (const item in cartItems) {
-      closeInfo = ITEMS.find((x) => x.id === Number(item));
-      close += cartItems[item] * closeInfo.id
-
+  const getTotalItemsCount = () => {
+    console.log(cartItems)
     }
-    return close;
-  }
-  //line above isnt working yet
+
+//getTotalitemsCount isnt working yet
+
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({...prev, [itemId]: prev[itemId] + 1}))
@@ -47,7 +43,24 @@ export default function HomeContextProvider(props) {
     setCartItems((prev) => ({...prev, [itemId]: prev[itemId] - 1}))
   }
 
-  const contextValue = {cartItems, getTotalCartAmount, addToCart, removeFromCart, clearItems}
+  const clearItem = (itemId) => {
+    setCartItems((prev) => ({...prev, [itemId]: prev[itemId] * 0}))
+    }
+
+  const clearAllItems = (totalItemCount) => {
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = ITEMS.find((y) => y.id === Number(item));
+        totalItemCount += cartItems[item] * itemInfo;
+        console.log('b');
+        console.log(totalItemCount)
+        setCartItems((prev) => ({...prev, [totalItemCount]: prev[totalItemCount] * 0}))
+      }
+    }
+  }
+//clearAllItems isnt working yet
+
+  const contextValue = {cartItems, getTotalCartAmount, addToCart, removeFromCart, clearItem, clearAllItems, getTotalItemsCount}
 
 
   return (

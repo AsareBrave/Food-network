@@ -10,17 +10,18 @@ function MyButton(props) {
 
 export default function CartItems(props) {
     const {id, itemName, price, itemImage} = props.data;
-    const { cartItems, addToCart, removeFromCart, clearItems } = useContext(HomeContext);
+    const { cartItems, addToCart, removeFromCart, clearItem} = useContext(HomeContext);
     const itemTotalPrice = price * cartItems[id];
     const formattedTotal = itemTotalPrice.toLocaleString("en-US");
-    const clearItem = clearItems;
+
+    
 
 
         return (
             <>
                 <div className='h-[46px] md:h-[75px] flex justify-between font-Poppins mt-[20px]'>
                     <div className='flex gap-[14px] w-[210px] md:w-[350px]'>
-                        <button className='my-auto' onClick={() => clearItem}>
+                        <button className='my-auto' onClick={() => clearItem(id)}>
                             <img src="/src/assets/close.png" alt=""  />
                         </button>
                         <div className='w-[57px] md:w-[133px] h-[46px] md:h-[75px] border'>
@@ -29,17 +30,17 @@ export default function CartItems(props) {
                         <div className='flex flex-col justify-between'>
                             <p className='text-[10px] md:text-[16px] text-primary-grey font-semibold'>{itemName}</p>
                             <div className='flex items-center justify-start gap-[10px] text-primary-red'>
-                                <button onClick={() => addToCart(id)}>
+                                <div onClick={() => addToCart(id)}>
                                     <MyButton
                                         text="+"
                                     />
-                                </button>
+                                </div>
                                 <p className='text-[14px] font-medium '>{cartItems[id]}</p>
-                                <button onClick={() => removeFromCart(id)}>
+                                <div onClick={() => removeFromCart(id)}>
                                     <MyButton
                                         text="-"
                                     />
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -49,6 +50,7 @@ export default function CartItems(props) {
                     </div>
                 </div>
                 <div className='border-b-[1px] mt-[20px]'></div>
+                {/* {console.log(cartItems)} */}
             </>
         )
 }

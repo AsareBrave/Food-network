@@ -7,7 +7,7 @@ import Btn from '../components/Btn.jsx'
 
 
 export default function Cart() {
-    const { cartItems, getTotalCartAmount} = useContext(HomeContext);
+    const { cartItems, getTotalCartAmount, clearAllItems, getTotalItemsCount} = useContext(HomeContext);
     const totalAmount = getTotalCartAmount();
     const formattedTotalAmount = totalAmount.toLocaleString("en-US");
     
@@ -41,7 +41,7 @@ export default function Cart() {
                 <p className="text-[16px] text-primary-red font-normal lg:hidden">4 Items</p>
             </div>
             <div className="">
-                <p className="text-[14px] text-primary-red font-semibold underline lg:hidden">Remove all</p>
+                <button className="text-[14px] text-primary-red font-semibold underline lg:hidden" onClick={() => clearAllItems()}>Remove all</button>
             </div>
         </div>
         <div className='mt-[42px]'>
@@ -64,7 +64,7 @@ export default function Cart() {
                 text={checkOutText()}
                 myClasses='mt-[37px] mb-[20px] lg:mt-[60px]'
             />
+    {getTotalItemsCount()}
     </div>
-    
   )
 }
